@@ -452,3 +452,29 @@ body,button{font-family:var(--font-geist-mono),"SFMono-Regular",Consolas,monospa
 .globe-focus-note button{padding:6px 9px;color:#000;border:0;border-bottom:1px solid rgba(0,0,0,.55);background:rgba(255,255,255,.9);font-size:9px;cursor:pointer;pointer-events:auto;transform:rotate(.6deg)}
 .globe-focus-note button:hover,.globe-focus-note button:focus-visible{outline:1.5px dashed #000;outline-offset:3px}
 @media(max-width:700px){.globe-focus-note{top:8px;width:88%}.globe-focus-note strong{font-size:16px}.globe-focus-note em{display:none}.globe-focus-note button{font-size:8px}}
+
+/* MOBILE LANDING: KEEP THE FIRST SCREEN ABOUT THE EARTH, NOT THE DIRECTORY */
+@media (max-width:700px){
+  html,body{min-height:100%;background:#fff}
+  .raw-doodle-ui.signal-app{display:flex;flex-direction:column;min-height:100svh;height:auto;overflow-x:hidden;overflow-y:visible;background:#fff;background-image:none}
+  .raw-doodle-ui .app-header{position:sticky;top:0;z-index:80;display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:58px;height:58px;padding:0 16px;background:#fff;border-bottom:1px solid rgba(0,0,0,.14);box-shadow:none}
+  .raw-doodle-ui .brand-cluster{gap:0}
+  .raw-doodle-ui .traffic-mark-illustration{width:21px;height:42px;filter:contrast(1.35);mix-blend-mode:multiply}
+  .raw-doodle-ui .wordmark>span,.raw-doodle-ui .font-switch,.raw-doodle-ui .map-search,.raw-doodle-ui .main-nav{display:none}
+  .raw-doodle-ui .sound-toggle{min-width:auto;padding:0;color:#000;background:transparent;font-size:9px;letter-spacing:.08em}
+
+  .raw-doodle-ui .earth-workspace,.raw-doodle-ui .earth-workspace.has-preview{display:flex;flex:1 0 auto;min-height:0;grid-template-columns:none;grid-template-rows:none;flex-direction:column;overflow:visible;background:#fff}
+  .raw-doodle-ui .intro-panel{flex:0 0 auto;min-height:0;padding:36px 22px 22px;overflow:visible;border:0;background:#fff}
+  .raw-doodle-ui .intro-panel .section-code{margin:0 0 12px;font-size:10px}
+  .raw-doodle-ui .intro-panel h1.lyric.lyric-title,.raw-doodle-ui.font-trackpad .intro-panel h1.lyric.lyric-title{margin:0;max-width:none;font-size:clamp(44px,13vw,58px);line-height:.93}
+  .raw-doodle-ui .intro-panel>p.lyric.intro-copy{margin:17px 0 0;max-width:100%;font-size:14px;line-height:1.5;white-space:normal}
+  .raw-doodle-ui .global-cta,.raw-doodle-ui .archive-cta,.raw-doodle-ui .city-shortcuts,.raw-doodle-ui .status-row{display:none}
+
+  .raw-doodle-ui .globe-panel{flex:0 0 auto;width:100%;height:min(68svh,620px);min-height:460px;background:#fff;background-image:none}
+  .raw-doodle-ui .globe-shell{width:min(96vw,520px);filter:none}
+  .raw-doodle-ui .map-feature-card{display:none}
+  .raw-doodle-ui .globe-controls{bottom:14px;max-width:calc(100% - 24px);padding:4px 6px;background:#fff;border-top:1px solid rgba(0,0,0,.24)}
+  .raw-doodle-ui .globe-controls span,.raw-doodle-ui .globe-controls>i{display:none}
+  .raw-doodle-ui .globe-controls button{width:30px;height:30px;font-size:15px}
+  .raw-doodle-ui .app-footer{display:none}
+}
