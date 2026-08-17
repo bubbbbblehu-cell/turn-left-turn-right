@@ -457,17 +457,17 @@ body,button{font-family:var(--font-geist-mono),"SFMono-Regular",Consolas,monospa
 @media (max-width:700px){
   html,body{min-height:100%;background:#fff}
   .raw-doodle-ui.signal-app{display:flex;flex-direction:column;min-height:100svh;height:auto;overflow-x:hidden;overflow-y:visible;background:#fff;background-image:none}
-  .raw-doodle-ui .app-header{position:sticky;top:0;z-index:80;display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:58px;height:58px;padding:0 16px;background:#fff;border-bottom:1px solid rgba(0,0,0,.14);box-shadow:none}
+  .raw-doodle-ui .app-header{position:sticky;top:0;z-index:80;display:grid;grid-template-columns:minmax(0,1fr) auto;min-height:44px;height:44px;padding:0 16px;background:#fff;border-bottom:1px solid rgba(0,0,0,.14);box-shadow:none}
   .raw-doodle-ui .brand-cluster{gap:0}
-  .raw-doodle-ui .traffic-mark-illustration{width:21px;height:42px;filter:contrast(1.35);mix-blend-mode:multiply}
+  .raw-doodle-ui .traffic-mark-illustration{display:none}
   .raw-doodle-ui .wordmark>span,.raw-doodle-ui .font-switch,.raw-doodle-ui .map-search,.raw-doodle-ui .main-nav{display:none}
   .raw-doodle-ui .sound-toggle{min-width:auto;padding:0;color:#000;background:transparent;font-size:9px;letter-spacing:.08em}
 
   .raw-doodle-ui .earth-workspace,.raw-doodle-ui .earth-workspace.has-preview{display:flex;flex:1 0 auto;min-height:0;grid-template-columns:none;grid-template-rows:none;flex-direction:column;overflow:visible;background:#fff}
-  .raw-doodle-ui .intro-panel{flex:0 0 auto;min-height:0;padding:36px 22px 22px;overflow:visible;border:0;background:#fff}
+  .raw-doodle-ui .intro-panel{flex:0 0 auto;min-height:0;padding:27px 22px 18px;overflow:visible;border:0;background:#fff}
   .raw-doodle-ui .intro-panel .section-code{margin:0 0 12px;font-size:10px}
-  .raw-doodle-ui .intro-panel h1.lyric.lyric-title,.raw-doodle-ui.font-trackpad .intro-panel h1.lyric.lyric-title{margin:0;max-width:none;font-size:clamp(44px,13vw,58px);line-height:.93}
-  .raw-doodle-ui .intro-panel>p.lyric.intro-copy{margin:17px 0 0;max-width:100%;font-size:14px;line-height:1.5;white-space:normal}
+  .raw-doodle-ui .intro-panel h1.lyric.lyric-title,.raw-doodle-ui.font-trackpad .intro-panel h1.lyric.lyric-title{margin:0;max-width:none;font-size:clamp(36px,11vw,46px);line-height:.96}
+  .raw-doodle-ui .intro-panel>p.lyric.intro-copy{margin:13px 0 0;max-width:100%;font-size:13px;line-height:1.5;white-space:normal}
   .raw-doodle-ui .global-cta,.raw-doodle-ui .archive-cta,.raw-doodle-ui .city-shortcuts,.raw-doodle-ui .status-row{display:none}
 
   .raw-doodle-ui .globe-panel{flex:0 0 auto;width:100%;height:min(68svh,620px);min-height:460px;background:#fff;background-image:none}
@@ -477,4 +477,20 @@ body,button{font-family:var(--font-geist-mono),"SFMono-Regular",Consolas,monospa
   .raw-doodle-ui .globe-controls span,.raw-doodle-ui .globe-controls>i{display:none}
   .raw-doodle-ui .globe-controls button{width:30px;height:30px;font-size:15px}
   .raw-doodle-ui .app-footer{display:none}
+
+  /* A selected signal is a two-pane view: globe above, scrollable evidence below. */
+  .raw-doodle-ui .earth-workspace.has-preview{flex:0 0 calc(100svh - 44px);height:calc(100svh - 44px);overflow:hidden}
+  .raw-doodle-ui .earth-workspace.has-preview .intro-panel{display:none}
+  .raw-doodle-ui .earth-workspace.has-preview .globe-panel{flex:0 0 42%;width:100%;height:42%;min-height:0;border-bottom:1.5px solid #000}
+  .raw-doodle-ui .earth-workspace.has-preview .globe-shell{width:min(55vw,280px)}
+  .raw-doodle-ui .earth-workspace.has-preview .globe-controls{bottom:7px;transform:translateX(-50%) scale(.88);transform-origin:bottom center}
+  .raw-doodle-ui .earth-workspace.has-preview :is(.city-preview,.special-preview){position:relative;z-index:15;left:auto;right:auto;bottom:auto;display:block;flex:1 1 auto;width:100%;height:auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;border:0!important;border-top:1.5px solid #000!important;box-shadow:none!important;background:#fff}
+  .raw-doodle-ui .earth-workspace.has-preview :is(.city-preview,.special-preview)::before{display:none}
+  .raw-doodle-ui .earth-workspace.has-preview :is(.city-preview,.special-preview)>header{position:sticky;top:0;z-index:4;height:60px;padding:9px 16px;background:#fff}
+  .raw-doodle-ui .earth-workspace.has-preview :is(.city-preview,.special-preview) h2{margin:2px 5px 0 0;font-size:25px;line-height:1.05}
+  .raw-doodle-ui .earth-workspace.has-preview :is(.city-preview,.special-preview) header button{width:31px;height:31px;font-size:18px}
+  .raw-doodle-ui .earth-workspace.has-preview .preview-stage,.raw-doodle-ui .earth-workspace.has-preview .special-preview>figure,.raw-doodle-ui .earth-workspace.has-preview .catalog-found-photo,.raw-doodle-ui .earth-workspace.has-preview .catalog-signal-stage{height:172px;min-height:172px}
+  .raw-doodle-ui .earth-workspace.has-preview .preview-copy,.raw-doodle-ui .earth-workspace.has-preview .special-preview-copy{padding:13px 16px}
+  .raw-doodle-ui .earth-workspace.has-preview .action-button,.raw-doodle-ui .earth-workspace.has-preview .special-preview-actions{margin:0 16px 14px}
+  .raw-doodle-ui .earth-workspace.has-preview .sound-console{padding-bottom:12px}
 }
