@@ -494,3 +494,22 @@ body,button{font-family:var(--font-geist-mono),"SFMono-Regular",Consolas,monospa
   .raw-doodle-ui .earth-workspace.has-preview .action-button,.raw-doodle-ui .earth-workspace.has-preview .special-preview-actions{margin:0 16px 14px}
   .raw-doodle-ui .earth-workspace.has-preview .sound-console{padding-bottom:12px}
 }
+
+/* FIRST VISIT GUIDE: A SMALL, REOPENABLE MAP LEGEND */
+.raw-doodle-ui .header-tools{justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:12px;min-width:0}
+.raw-doodle-ui .guide-toggle{padding:5px 2px;color:#000;border:0;border-bottom:1px solid rgba(0,0,0,.42);background:transparent;font-family:var(--font-pixel);font-size:8px;letter-spacing:.04em;cursor:pointer}
+.raw-doodle-ui .guide-toggle span{display:inline-grid;place-items:center;width:13px;height:13px;margin-left:3px;border:1px solid #000;border-radius:50%;font-size:8px;line-height:1}
+.raw-doodle-ui .guide-toggle:hover,.raw-doodle-ui .guide-toggle:focus-visible{outline:0;border-bottom-color:#000;transform:translateY(-1px)}
+.raw-doodle-ui .newcomer-guide{position:fixed;z-index:120;top:102px;right:clamp(18px,3vw,54px);width:min(365px,calc(100vw - 36px));padding:16px 17px 14px;color:#000;border:1.5px solid #000;background:#fff;box-shadow:6px 7px 0 rgba(0,0,0,.92);font-family:var(--font-geist-sans),"PingFang SC",sans-serif;animation:newcomer-guide-in .28s cubic-bezier(.2,.85,.3,1) both}
+.raw-doodle-ui .newcomer-guide>header{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.raw-doodle-ui .newcomer-guide>header>span{font-family:var(--font-pixel);font-size:8px;letter-spacing:.06em}
+.raw-doodle-ui .newcomer-guide>header button{width:25px;height:25px;padding:0;color:#000;border:1px solid #000;border-radius:50%;background:#fff;font-size:18px;line-height:1;cursor:pointer}
+.raw-doodle-ui .newcomer-guide>header button:hover,.raw-doodle-ui .newcomer-guide>header button:focus-visible{outline:0;color:#fff;background:#000}
+.raw-doodle-ui .newcomer-guide h2{margin:18px 0 14px;font:400 29px/.98 var(--font-hand);letter-spacing:-.03em}
+.raw-doodle-ui .newcomer-guide ol{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.raw-doodle-ui .newcomer-guide li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:9px;align-items:start;padding-top:10px;border-top:1px dotted rgba(0,0,0,.32)}
+.raw-doodle-ui .newcomer-guide li>b{font-family:var(--font-pixel);font-size:9px;font-weight:400;line-height:1.35}.raw-doodle-ui .newcomer-guide li>span{display:flex;flex-direction:column;gap:3px}.raw-doodle-ui .newcomer-guide li strong{font-size:13px;font-weight:650}.raw-doodle-ui .newcomer-guide li small{color:#525252;font-size:11px;line-height:1.5}
+.raw-doodle-ui .newcomer-guide footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px;padding-top:12px;border-top:1px solid #000}.raw-doodle-ui .newcomer-guide footer>small{max-width:155px;color:#606060;font-size:9px;line-height:1.4}.raw-doodle-ui .newcomer-guide footer button{padding:8px 10px;color:#fff;border:0;background:#000;font-family:var(--font-pixel);font-size:8px;letter-spacing:.04em;cursor:pointer}.raw-doodle-ui .newcomer-guide footer button:hover,.raw-doodle-ui .newcomer-guide footer button:focus-visible{outline:1.5px dashed #000;outline-offset:3px;background:#237a45}
+@keyframes newcomer-guide-in{from{opacity:0;transform:translateY(-9px) rotate(-.7deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+@media(max-width:1100px){.raw-doodle-ui .app-header{grid-template-columns:minmax(0,1fr) minmax(170px,240px) auto}.raw-doodle-ui .header-tools{gap:9px}}
+@media(max-width:700px){.raw-doodle-ui .header-tools{gap:10px}.raw-doodle-ui .guide-toggle{font-size:0;border-bottom:0}.raw-doodle-ui .guide-toggle span{width:17px;height:17px;margin:0;font-size:10px}.raw-doodle-ui .sound-toggle{font-size:0}.raw-doodle-ui .newcomer-guide{top:55px;right:12px;width:min(350px,calc(100vw - 24px));padding:14px 15px;box-shadow:4px 5px 0 rgba(0,0,0,.9)}.raw-doodle-ui .newcomer-guide h2{margin:14px 0 12px;font-size:25px}.raw-doodle-ui .newcomer-guide ol{gap:9px}.raw-doodle-ui .newcomer-guide li{padding-top:8px}.raw-doodle-ui .newcomer-guide li small{font-size:10px}.raw-doodle-ui .newcomer-guide footer{margin-top:12px}.raw-doodle-ui .newcomer-guide footer>small{font-size:8px}.raw-doodle-ui .newcomer-guide footer button{padding:8px}}

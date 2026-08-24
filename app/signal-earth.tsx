@@ -857,6 +857,7 @@ export function SignalEarth() {
   const [searchTerm,setSearchTerm]=useState("");
   const [fontMode,setFontMode]=useState<FontMode>("trackpad");
   const [focusedRegion,setFocusedRegion]=useState<FocusRegion|null>(null);
+  const [guideOpen,setGuideOpen]=useState(false);
   const dragOrigin = useRef<{ x: number; y: number; rotation: number; tilt: number } | null>(null);
   const globeShellRef=useRef<HTMLDivElement|null>(null);
   const audioContext = useRef<AudioContext | null>(null);
@@ -1015,6 +1016,16 @@ export function SignalEarth() {
 
   useEffect(()=>{fetch("/data/country-coverage.json").then((response)=>response.json()).then((data:CountryCoverage[])=>setCountryCoverage(data)).catch(()=>setCountryCoverage([]));},[]);
 
+  useEffect(()=>{
+    if(typeof window==="undefined")return;
+    setGuideOpen(!window.localStorage.getItem("signal-earth-guide-seen"));
+  },[]);
+
+  const dismissGuide=useCallback(()=>{
+    if(typeof window!=="undefined")window.localStorage.setItem("signal-earth-guide-seen","true");
+    setGuideOpen(false);
+  },[]);
+
   const finishPerformance = useCallback((id: CityId) => {
     clearSound();
     setPhase("complete");
@@ -1166,10 +1177,27 @@ export function SignalEarth() {
             {!searchResults.length&&!countrySearchResults.length&&<p>没有匹配地点 / NO MATCH</p>}
           </div>}
         </div>
-        <button className={`sound-toggle ${soundOn ? "on" : ""}`} type="button" onClick={toggleSound} aria-pressed={soundOn}>
-          <span aria-hidden="true">{soundOn ? "◖))" : "◖"}</span> SOUND {soundOn ? "ON" : "OFF"}
-        </button>
+        <div className="header-tools">
+          <button className="guide-toggle" type="button" onClick={()=>setGuideOpen(true)} aria-haspopup="dialog" aria-expanded={guideOpen}>新手指南 <span aria-hidden="true">?</span></button>
+          <button className={`sound-toggle ${soundOn ? "on" : ""}`} type="button" onClick={toggleSound} aria-pressed={soundOn}>
+            <span aria-hidden="true">{soundOn ? "◖))" : "◖"}</span> SOUND {soundOn ? "ON" : "OFF"}
+          </button>
+        </div>
       </header>
+
+      {guideOpen&&<aside className="newcomer-guide" role="dialog" aria-modal="false" aria-labelledby="newcomer-guide-title" onPointerDown={(event)=>event.stopPropagation()}>
+        <header>
+          <span>FIRST SIGNAL / 新手指南</span>
+          <button type="button" onClick={dismissGuide} aria-label="关闭新手指南">×</button>
+        </header>
+        <h2 id="newcomer-guide-title">从一盏灯开始</h2>
+        <ol>
+          <li><b>01</b><span><strong>拖动地球</strong><small>用鼠标或手指旋转地球；底部的 − / ＋ 只改变缩放。</small></span></li>
+          <li><b>02</b><span><strong>点任意圆点</strong><small>城市点会打开故事，国家点则显示当地信号资料的收集状态。</small></span></li>
+          <li><b>03</b><span><strong>随时回到全球</strong><small>聚焦某个城市后，点击地图上方的「返回全球视图」即可继续漫游。</small></span></li>
+        </ol>
+        <footer><small>声音默认关闭，可从右上角随时开启。</small><button type="button" onClick={dismissGuide}>开始探索 ↗</button></footer>
+      </aside>}
 
       <section className={`earth-workspace ${selectedCity || selectedStoryId || selectedCatalogId || selectedCountry ? "has-preview" : ""} ${ensemble ? "is-ensemble" : ""} ${archiveOpen ? "is-archive" : ""}`}>
         <div className="intro-panel">
